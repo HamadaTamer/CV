@@ -70,7 +70,8 @@ var level=1;
 
 //knwoing what he pressed:
 $(".btn").on("click", function(){
-     if (level===1){
+    console.log("i was pressed");  
+    if (level===1){
         setTimeout(() => {
             start_game();
         }, 600);
@@ -85,13 +86,14 @@ $(".btn").on("click", function(){
 });
 
 $(document).on("keydown", function(event){
+    console.log(event.key); 
+   // console.log(sequence.toString());
     if (level===1){
         setTimeout(() => {
             start_game();
         }, 600);
     }
     else {
-        
         switch(event.key){
             case 'w':
                 player_click_button('green');
@@ -119,18 +121,22 @@ $(document).on("keydown", function(event){
 });
 
 function checkAnswer(){
+    
     if (player_clicks.length===sequence.length){
         if (player_clicks.toString() === sequence.toString()){
-            player_clicks=[];
             setTimeout(() => {
                 start_game();
-            }, 500);
+            }, 200);
         }
         else {
             game_over();
         }
+    } else if( player_clicks.length > sequence.length){
+        game_over();
     }
-    else if( player_clicks.length > sequence.length){
+
+
+    if (player_clicks[player_clicks.length-1] !== sequence[player_clicks.length-1]){
         game_over();
     }
 }
@@ -148,6 +154,7 @@ function game_over(){
 }
 function start_game(){
     $("#level-title").text("Level "+level);
+    player_clicks=[];
     sequence.push(buttons[Math.floor(Math.random()*4)]);    // this adds a random button to the sequence
     level++;
     click_button_show(sequence[sequence.length-1]);    
