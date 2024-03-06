@@ -70,11 +70,18 @@ var level=1;
 
 //knwoing what he pressed:
 $(".btn").on("click", function(){
-    player_click_button(this.id);
-    player_clicks.push(this.id);
-    setTimeout(() => {
-        checkAnswer();
-    }, 1000);
+     if (level===1){
+        setTimeout(() => {
+            start_game();
+        }, 600);
+    }
+    else{
+        player_click_button(this.id);
+        player_clicks.push(this.id);
+        setTimeout(() => {
+            checkAnswer();
+        }, 1000);
+    }
 });
 
 $(document).on("keydown", function(event){
