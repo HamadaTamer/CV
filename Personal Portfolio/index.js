@@ -4,7 +4,7 @@ function sleep(ms){
 }
 let sleeptime=100;
 const el=document.getElementById('typewriter');
-var jobs=['Frontend Developer', 'Backend Developer' , 'Penetration Tester','Embedded Systems Engineer'];
+var jobs=['Frontend Developer', 'Backend Developer' , 'Penetration Tester'];
 let job_index=0;
 
 const writeloop=async()=>{
